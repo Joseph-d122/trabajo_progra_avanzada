@@ -7,6 +7,7 @@ import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import application.service.CitaMedicaService;
 import domain.model.CitaMedica;
+import domain.model.EstadoCita;
 
 @Path("/cita")
 public class CitaMedicaResource {
@@ -14,9 +15,9 @@ public class CitaMedicaResource {
     @Inject
     CitaMedicaService citaMedicaService;
     
-    @Path("/reservar")
+    @Path("/crear")
     @POST
-    public Uni<Response> reservarCita(CitaMedica cita) {
+    public Uni<Response> crear(CitaMedica cita) {
         return citaMedicaService.reservar(cita).onItem().transform(c -> 
         Response.status(Response.Status.CREATED).entity(c).build());
     }
@@ -37,5 +38,11 @@ public class CitaMedicaResource {
     @GET
     public Uni<CitaMedica> buscarPorMedico(@PathParam("cedula") String cedula) {
         return citaMedicaService.buscarCitaPorCedulaMedico(cedula);
+    }
+
+    @Path("actualizarEstado/{id}/estado")
+    @PATCH
+    public Response actualizarEstado(@PathParam("id") Integer id, @QueryParam("estado") EstadoCita estado) {
+        return Response.ok(citaMedicaService.actualizarEstado(id, estado)).build();
     }
 }

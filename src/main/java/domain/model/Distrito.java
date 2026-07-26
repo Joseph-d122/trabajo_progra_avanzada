@@ -18,12 +18,12 @@ public class Distrito extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "region_id")
+    @Column(name = "distrito_id")
     private Integer id;
 
-    @Column(name = "region_nombre")
-    private String nombre;
+    @Column(name = "numero_distrito")
+    private String numeroDistrito; 
 
-    @Column(name = "region_pais")
-    private String pais;
+    @Column(name = "nombre")
+    private String nombre;
 }

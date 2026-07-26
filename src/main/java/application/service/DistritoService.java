@@ -35,7 +35,15 @@ public class DistritoService {
         return Uni.createFrom().item(distritoRepository.findById(id));
     }
 
-   
+    public Uni<Distrito> actualizar(Integer id, Distrito d) {
+        return Uni.createFrom().item(() -> {
+            Distrito e = distritoRepository.findById(id);
+            e.setNombre(d.getNombre());
+            e.setNumeroDistrito(d.getNumeroDistrito());
+            return e;
+        });
+    }
+
     public Uni<Void> eliminar(Integer id) {
         return Uni.createFrom().voidItem().invoke(() -> distritoRepository.deleteById(id));
     }

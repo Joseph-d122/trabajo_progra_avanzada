@@ -16,20 +16,27 @@ public class EspecialidadResource {
 
     @Path("/crear")
     @POST
-    public Uni<Response> crearEspecialidad(Especialidad especialidad) {
+    public Uni<Response> crear(Especialidad especialidad) {
         return especialidadService.guardar(especialidad).onItem().transform(e -> 
         Response.status(Response.Status.CREATED).entity(e).build());
     }
 
     @Path("/lsitar")
     @GET
-    public Uni<List<Especialidad>> listarEspecialidades() {
+    public Uni<List<Especialidad>> listar() {
         return especialidadService.listarTodas();
+    }
+
+    @Path("/actualizar/{id}")
+    @PUT
+    public Uni<Response> actualizar(@PathParam("id") Integer id, Especialidad especialidad) {
+        return especialidadService.actualizar(id, especialidad).onItem().transform(e -> 
+        Response.ok(e).build());
     }
 
     @Path("/eliminarId/{id}")
     @DELETE
-    public Uni<Response> eliminarEspecialidad(@PathParam("id") Integer id) {
+    public Uni<Response> eliminar(@PathParam("id") Integer id) {
         return especialidadService.eliminar(id).onItem().transform(v -> 
         Response.noContent().build());
     }

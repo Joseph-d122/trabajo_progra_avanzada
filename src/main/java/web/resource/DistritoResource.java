@@ -28,6 +28,13 @@ public class DistritoResource {
         return distritoService.listarTodas();
     }
 
+    @Path("/actualizar/{id}")
+    @PUT
+    public Uni<Response> actualizar(@PathParam("id") Integer id, Distrito distrito) {
+        return distritoService.actualizar(id, distrito).onItem().transform(d -> 
+            Response.ok(d).build());
+    }
+
     @Path("/eliminarPorId/{id}")
     @DELETE
     public Uni<Response> eliminar(@PathParam("id") Integer id) {

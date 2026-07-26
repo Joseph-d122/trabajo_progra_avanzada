@@ -9,12 +9,12 @@ import domain.model.Especialidad;
 import infraestructure.repository.EspecialidadRepositoryImpl;
 
 @ApplicationScoped
+@Transactional
 public class EspecialidadService {
 
     @Inject
     EspecialidadRepositoryImpl especialidadRepository;
 
-    @Transactional
     public Uni<Especialidad> guardar(Especialidad especialidad) {
         return Uni.createFrom().item(() -> {
             especialidadRepository.persist(especialidad);
@@ -30,7 +30,15 @@ public class EspecialidadService {
         return Uni.createFrom().item(especialidadRepository.findById(id));
     }
 
-    @Transactional
+    public Uni<Especialidad> actualizar(Integer id, Especialidad d) {
+        return Uni.createFrom().item(() -> {
+            Especialidad e = especialidadRepository.findById(id);
+            e.setNombre(d.getNombre()); 
+            e.setDescripcion(d.getDescripcion());
+            return e;
+        });
+    }
+
     public Uni<Void> eliminar(Integer id) {
         return Uni.createFrom().voidItem().invoke(() -> especialidadRepository.deleteById(id));
     }

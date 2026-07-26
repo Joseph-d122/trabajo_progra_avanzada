@@ -9,6 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import domain.model.CitaMedica;
+import domain.model.EstadoCita;
 import domain.model.Medico;
 import domain.model.Paciente;
 import infraestructure.repository.CitaMedicaRepositoryImpl;
@@ -48,6 +49,12 @@ public class CitaMedicaService {
             }
             return citaExistente;
         });
+    }
+
+    public CitaMedica actualizarEstado(Integer id, EstadoCita estado) {
+        CitaMedica cita = citaMedicaRepositoryImpl.findById(id);
+        cita.setEstado(estado);
+        return cita;
     }
 
     public Uni<Void> eliminar(Integer id) {
