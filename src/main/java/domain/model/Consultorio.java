@@ -16,9 +16,9 @@ public class Consultorio extends PanacheEntityBase {
     @Column(name = "consultorio_id")
     private Integer id;
     
-    @Column(name = "consultorio_numero", nullable = false)
+    @Column(name = "consultorio_numero")
     private String numero;
     
-    @Column(name = "consultorio_ubicacion", nullable = false)
+    @Column(name = "consultorio_ubicacion")
     private String ubicacion;
 }

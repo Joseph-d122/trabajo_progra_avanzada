@@ -16,15 +16,15 @@ public class Medico extends PanacheEntityBase {
     @Column(name = "medico_id")
     private Integer id;
     
-    @Column(name = "medico_cedula", unique = true, nullable = false)
+    @Column(name = "medico_cedula")
     private String cedula;
     
-    @Column(name = "medico_nombre", nullable = false)
+    @Column(name = "medico_nombre")
     private String nombre;
     
-    @Column(name = "medico_apellido", nullable = false)
+    @Column(name = "medico_apellido")
     private String apellido;
     
-    @Column(name = "medico_especialidad", nullable = false)
+    @Column(name = "medico_especialidad")
     private String especialidad;
 }

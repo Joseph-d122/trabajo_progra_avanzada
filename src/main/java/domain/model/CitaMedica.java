@@ -18,13 +18,13 @@ public class CitaMedica extends PanacheEntityBase {
     @Column(name = "cita_id")
     private Integer id;
 
-    @Column(name = "cita_paciente_id", nullable = false)
+    @Column(name = "cita_paciente_id")
     private Integer pacienteId;
 
-    @Column(name = "cita_medico_id", nullable = false)
+    @Column(name = "cita_medico_id")
     private Integer medicoId;
 
-    @Column(name = "cita_fecha_cita", nullable = false)
+    @Column(name = "cita_fecha_cita")
     private LocalDate fechaCita;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -34,4 +34,8 @@ public class CitaMedica extends PanacheEntityBase {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cita_medico_id")
     private Medico medico;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private EstadoCita estado = EstadoCita.PROGRAMADO;
 }

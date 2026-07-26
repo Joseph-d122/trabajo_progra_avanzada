@@ -16,9 +16,9 @@ public class Especialidad extends PanacheEntityBase {
     @Column(name = "especialidad_id")
     private Integer id;
 
-    @Column(name = "especialidad_nombre", nullable = false, length = 100, unique = true)
+    @Column(name = "especialidad_nombre")
     private String nombre;
 
-    @Column(name = "especialidad_descripcion", length = 250)
+    @Column(name = "especialidad_descripcion")
     private String descripcion;
 }

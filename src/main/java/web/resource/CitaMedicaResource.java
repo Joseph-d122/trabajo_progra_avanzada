@@ -17,8 +17,8 @@ public class CitaMedicaResource {
     @Path("/reservar")
     @POST
     public Uni<Response> reservarCita(CitaMedica cita) {
-        return citaMedicaService.reservar(cita)
-                .onItem().transform(c -> Response.status(Response.Status.CREATED).entity(c).build());
+        return citaMedicaService.reservar(cita).onItem().transform(c -> 
+        Response.status(Response.Status.CREATED).entity(c).build());
     }
 
     @Path("/listar")

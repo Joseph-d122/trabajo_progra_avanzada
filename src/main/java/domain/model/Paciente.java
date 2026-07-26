@@ -16,19 +16,19 @@ public class Paciente extends PanacheEntityBase {
     @Column(name = "paciente_id")
     private Integer id;
     
-    @Column(name = "paciente_cedula", unique = true, nullable = false, length = 10)
+    @Column(name = "paciente_cedula")
     private String cedula;
     
-    @Column(name = "paciente_nombre", nullable = false, length = 100)
+    @Column(name = "paciente_nombre")
     private String nombre;
     
-    @Column(name = "paciente_apellido", nullable = false, length = 100)
+    @Column(name = "paciente_apellido")
     private String apellido;
 
-    @Column(name = "region_id", nullable = false)
-    private Integer regionId;
+   @Column(name = "distrito_id")
+    private Integer distritoId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "region_id", insertable = false, updatable = false)
-    private Region region;
+    @JoinColumn(name = "distrito_id")
+    private Distrito distrito;
 }

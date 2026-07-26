@@ -17,8 +17,8 @@ public class EspecialidadResource {
     @Path("/crear")
     @POST
     public Uni<Response> crearEspecialidad(Especialidad especialidad) {
-        return especialidadService.guardar(especialidad)
-                .onItem().transform(e -> Response.status(Response.Status.CREATED).entity(e).build());
+        return especialidadService.guardar(especialidad).onItem().transform(e -> 
+        Response.status(Response.Status.CREATED).entity(e).build());
     }
 
     @Path("/lsitar")
@@ -30,7 +30,7 @@ public class EspecialidadResource {
     @Path("/eliminarId/{id}")
     @DELETE
     public Uni<Response> eliminarEspecialidad(@PathParam("id") Integer id) {
-        return especialidadService.eliminar(id)
-                .onItem().transform(v -> Response.noContent().build());
+        return especialidadService.eliminar(id).onItem().transform(v -> 
+        Response.noContent().build());
     }
 }

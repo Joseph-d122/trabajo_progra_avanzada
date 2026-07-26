@@ -11,19 +11,19 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "region")
+@Table(name = "distrito")
 @Getter
 @Setter
-public class Region extends PanacheEntityBase {
+public class Distrito extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "region_id")
     private Integer id;
 
-    @Column(name = "region_nombre", nullable = false, length = 50, unique = true)
+    @Column(name = "region_nombre")
     private String nombre;
 
-    @Column(name = "region_pais", nullable = false, length = 50)
+    @Column(name = "region_pais")
     private String pais;
 }
