@@ -18,4 +18,16 @@ public class CitaMedicaRepositoryImpl implements PanacheRepositoryBase<CitaMedic
     public List<CitaMedica> buscarPorPaciente(String cedulaPaciente) {
         return list("paciente.cedula", cedulaPaciente);
     }
+
+    public CitaMedica buscarCitaPorCedulaPaciente(String cedulaPaciente) {
+        return find("paciente.cedula", cedulaPaciente).firstResult();
+    }
+
+    public CitaMedica buscarCitaPorCedulaMedico(String cedulaMedico) {
+        return find("medico.cedula", cedulaMedico).firstResult();
+    }
+
+    public CitaMedica buscarCitaPorFecha(LocalDate fechaCita) {
+        return find("fechaCita", fechaCita).firstResult();
+    }
 }
